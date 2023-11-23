@@ -1,0 +1,10 @@
+<!-- users.component.html -->
+<header-component></header-component>
+<div class="flex space-x-4 justify-center items-center h-screen">
+  <button (click)="openListDialog()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2">Listar</button>
+  <button (click)="openFormDialog('Criar')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2">Criar</button>
+  <button (click)="openUserDialog('Read')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2">Read</button>
+  <button (click)="updateDialog()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2">Update</button>
+  <button (click)="deleteDialog()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2">Delete</button>
+</div>
+<footer-component></footer-component>

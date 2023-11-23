@@ -1,0 +1,56 @@
+<form [formGroup]="updateForm" (ngSubmit)="openDialog()" class="flex flex-col items-center justify-center">
+  <div class="my-6 mx-4">
+    <label class="block text-gray-700 text-lg font-bold mb-2" for="name">Name</label>
+    <input id="name" type="text" formControlName="name" (blur)="updateForm.controls.name.markAsTouched()"
+           [ngClass]="{'border-red-500': updateForm.controls.name.invalid && updateForm.controls.name.touched}"
+           class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-lg">
+    <div *ngIf="updateForm.controls.name.errors?.required && updateForm.controls.name.touched"
+         class="text-red-500 text-xs mt-2">
+      Name is required.
+    </div>
+  </div>
+
+  <!-- Email field -->
+  <div class="my-6 mx-4">
+    <label class="block text-gray-700 text-lg font-bold mb-2" for="email">Email</label>
+    <input id="email" type="email" formControlName="email" (blur)="updateForm.controls.email.markAsTouched()"
+           [ngClass]="{'border-red-500': updateForm.controls.email.invalid && updateForm.controls.email.touched}"
+           class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-lg">
+    <div *ngIf="updateForm.controls.email.errors?.required && updateForm.controls.email.touched"
+         class="text-red-500 text-xs mt-2">
+      Email is required.
+    </div>
+    <div *ngIf="updateForm.controls.email.errors?.email && updateForm.controls.email.touched"
+         class="text-red-500 text-xs mt-2">
+      Please enter a valid email.
+    </div>
+    <div *ngIf="updateForm.controls.email.errors?.invalidService && updateForm.controls.email.touched"
+         class="text-red-500 text-xs mt-2">
+      Please enter an email from a valid service (Outlook, Hotmail, Gmail).
+    </div>
+  </div>
+
+  <!-- Password field -->
+  <div class="my-6 mx-4">
+    <label class="block text-gray-700 text-lg font-bold mb-2" for="password">Password</label>
+    <input id="password" type="password" formControlName="password" (blur)="updateForm.controls.password.markAsTouched()"
+           [ngClass]="{'border-red-500': updateForm.controls.password.invalid && updateForm.controls.password.touched}"
+           class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-lg">
+    <div *ngIf="updateForm.controls.password.errors?.required && updateForm.controls.password.touched"
+         class="text-red-500 text-xs mt-2">
+      Password is required.
+    </div>
+    <div *ngIf="updateForm.controls.password.errors?.minlength && updateForm.controls.password.touched"
+         class="text-red-500 text-xs mt-2">
+      Password must be at least 12 characters long.
+    </div>
+  </div>
+
+  <div class="flex justify-center mt-4 mb-4">
+    <button type="submit" [disabled]="!updateForm.valid"
+            [ngClass]="{'bg-blue-500 hover:bg-blue-700 cursor-pointer': updateForm.valid, 'bg-blue-300 cursor-not-allowed': !updateForm.valid}"
+            class="text-white font-bold py-2 px-4 rounded">
+      {{ buttonText }}
+    </button>
+  </div>
+</form>
